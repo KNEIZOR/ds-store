@@ -1,0 +1,64 @@
+header {
+    width: 100%;
+    height: 70px;
+    -webkit-box-shadow: 0px 15px 12px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 15px 12px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 15px 12px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    margin-right: 20px;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background: none;
+    -webkit-box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+header button:hover {
+    background-color: #be3144;
+    transition: 0.5s;
+}
+
+.header-title{
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.header-basket h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.header-basket h2 span {
+    margin-top: 5px;
+    font-size: 10pt;
+}
+.header-basket {
+    cursor: pointer;
+    transition: .5s;
+}
+
+.header-basket:hover {
+    color: #be3144;
+    transition: .5s;
+}
