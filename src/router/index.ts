@@ -14,7 +14,8 @@ export enum RouteNames {
     REGISTRATION = "/registration",
     BASKET = "/basket",
     MAIN = "/",
-    PRODUCT = "/:id"
+    PRODUCT = "/:id",
+    ADMIN = "/admin"
 }
 
 export const publicRoutes:IRoute[] = [

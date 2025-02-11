@@ -1,11 +1,16 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { privateRoutes, publicRoutes } from "../router";
+import { privateRoutes, publicRoutes, RouteNames } from "../router";
 import { useAppSelector } from "../hooks/redux";
+import Admin from "../pages/Admin";
 
 
 const AppRouter = () => {
     const {isAuth} = useAppSelector(state => state.auth)
+    const {isAdmin} = useAppSelector(state => state.admin)
+
+    console.log(isAdmin);
+    
 
     return (
         <Routes>
@@ -22,6 +27,7 @@ const AppRouter = () => {
                     element={<route.element />}
                 />
             ))}
+            {isAdmin && <Route path={RouteNames.ADMIN} element={<Admin />}/>}
             <Route path="*" element={<Navigate to={isAuth ? "/" : "/auth"} replace />} />
         </Routes>
     );

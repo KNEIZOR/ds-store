@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { admin } from "../admin";
+import { adminLogin } from "../store/reducers/AdminSlice";
 
 const Auth = () => {
     const [validated, setValidated] = useState(false);
@@ -22,17 +24,19 @@ const Auth = () => {
 
         setValidated(true);
         checkUser();
+        if (admin.email === email && admin.password === password) {
+            dispatch(adminLogin());
+        }
     };
 
     const checkUser = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in
                 const user = userCredential.user;
                 console.log(user);
-                
+
                 dispatch(login());
-                navigate(RouteNames.MAIN)
+                navigate(RouteNames.MAIN);
             })
             .catch((e) => {
                 setError(e.message);
