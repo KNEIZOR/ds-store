@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { Button, Form, Row } from "react-bootstrap";
 import "../styles/auth.css";
 import { useAppDispatch } from "../hooks/redux";
 import { login } from "../store/reducers/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import { RouteNames } from "../router";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import {
+    signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase/index";
+import { admin } from "../admin/index";
+import { adminLogin } from "../store/reducers/AdminSlice";
 
 const Auth = () => {
     const [validated, setValidated] = useState(false);
@@ -22,17 +26,16 @@ const Auth = () => {
 
         setValidated(true);
         checkUser();
+        if (admin.email === email && admin.password === password) {
+            dispatch(adminLogin());
+        }
     };
 
     const checkUser = () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log(user);
-                
+            .then(() => {
                 dispatch(login());
-                navigate(RouteNames.MAIN)
+                navigate(RouteNames.MAIN);
             })
             .catch((e) => {
                 setError(e.message);

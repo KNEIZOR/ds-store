@@ -13,8 +13,9 @@ export enum RouteNames {
     AUTH = "/auth",
     REGISTRATION = "/registration",
     BASKET = "/basket",
-    MAIN = "/",
-    PRODUCT = "/:id"
+    MAIN = "/store",
+    PRODUCT = "/store/:id",
+    ADMIN = "/admin"
 }
 
 export const publicRoutes:IRoute[] = [
